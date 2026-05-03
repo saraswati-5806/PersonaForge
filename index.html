@@ -5,13 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Portfolio</title>
 
-<!-- CSS -->
 <link rel="stylesheet" href="style.css">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -38,8 +35,9 @@
 <!-- HOME -->
 <section id="home" class="section home">
     <div class="glass">
-        <h1>Hi, I'm <span>Saraswati Panigrahi</span></h1>
+        <h1>Hi, I'm <span>Your Name</span></h1>
         <h2 id="typing"></h2>
+
         <a href="#projects" class="btn">View Projects</a>
         <a href="assets/resume.pdf" download class="btn">Download Resume</a>
     </div>
@@ -48,7 +46,7 @@
 <!-- ABOUT -->
 <section id="about" class="section">
     <h2>About Me</h2>
-    <p>I am a passionate developer learning web technologies. I love building responsive and interactive websites.</p>
+    <p>I am a passionate developer learning web technologies and building modern responsive websites.</p>
 </section>
 
 <!-- SKILLS -->
@@ -75,15 +73,25 @@
 <section id="projects" class="section">
     <h2>Projects</h2>
 
-    <div class="card project">
-    <img src="assets/images/project1.png">
+    <div class="grid">
 
-    <div class="overlay">
-        <h3>Portfolio Website</h3>
-        <p>Modern responsive portfolio</p>
-        <a href="#">View Code</a>
+        <div class="card project" onclick="openModal('Portfolio Website','Modern responsive portfolio','https://github.com/')">
+            <img src="assets/images/project1.png">
+            <div class="overlay">
+                <h3>Portfolio Website</h3>
+                <p>Click to view</p>
+            </div>
+        </div>
+
+        <div class="card project" onclick="openModal('Project 2','Description','https://github.com/')">
+            <img src="assets/images/project2.png">
+            <div class="overlay">
+                <h3>Project 2</h3>
+                <p>Click to view</p>
+            </div>
+        </div>
+
     </div>
-</div>+
 </section>
 
 <!-- CONTACT -->
@@ -94,7 +102,7 @@
         <input type="text" placeholder="Name" required>
         <input type="email" placeholder="Email" required>
         <textarea placeholder="Message" required></textarea>
-        <button type="submit">Send Message</button>
+        <button>Send</button>
     </form>
 
     <div class="socials">
@@ -103,6 +111,21 @@
         <a href="#"><i class="fa-solid fa-envelope"></i></a>
     </div>
 </section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <a id="modal-link" target="_blank">View Project</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Your Name</p>
+</footer>
+
 <script src="script.js"></script>
 
 </body>
