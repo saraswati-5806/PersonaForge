@@ -100,15 +100,19 @@
 
     <form id="contactForm" class="contact-form">
         
-        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="name" placeholder="Your Name">
+        <small class="error" id="nameError"></small>
 
-        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="email" id="email" placeholder="Your Email">
+        <small class="error" id="emailError"></small>
 
-        <textarea id="message" placeholder="Your Message" required></textarea>
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <small class="error" id="messageError"></small>
 
-        <button type="submit">Send Message</button>
-
-        <p id="formMessage" class="form-message"></p>
+        <button type="submit" id="submitBtn">
+            <span id="btnText">Send Message</span>
+            <span id="spinner" class="spinner"></span>
+        </button>
     </form>
 
     <div class="socials">
@@ -117,6 +121,9 @@
         <a href="#"><i class="fa-solid fa-envelope"></i></a>
     </div>
 </section>
+
+<!-- TOAST -->
+<div id="toast"></div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
