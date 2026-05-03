@@ -136,3 +136,45 @@ button {
         display: block;
     }
 }
+/* GLASS EFFECT */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 15px;
+}
+
+/* NAVBAR SCROLL */
+.scrolled {
+    background: rgba(0,0,0,0.8);
+}
+
+/* IMAGE STYLE */
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* SCROLL ANIMATION */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE MENU FIX */
+.nav-links.show {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+}
