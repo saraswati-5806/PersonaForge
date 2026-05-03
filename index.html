@@ -20,6 +20,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
     <h2 class="logo">MyPortfolio</h2>
+
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -27,7 +28,11 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="hamburger">☰</div>
+
+    <div class="right-controls">
+        <button id="theme-toggle">🌙</button>
+        <div class="hamburger">☰</div>
+    </div>
 </nav>
 
 <!-- HOME -->
@@ -36,6 +41,7 @@
         <h1>Hi, I'm <span>Saraswati Panigrahi</span></h1>
         <h2 id="typing"></h2>
         <a href="#projects" class="btn">View Projects</a>
+        <a href="assets/resume.pdf" download class="btn">Download Resume</a>
     </div>
 </section>
 
@@ -48,11 +54,20 @@
 <!-- SKILLS -->
 <section id="skills" class="section">
     <h2>Skills</h2>
-    <div class="grid">
-        <div class="card">HTML</div>
-        <div class="card">CSS</div>
-        <div class="card">JavaScript</div>
-        <div class="card">Git</div>
+
+    <div class="skill">
+        <p>HTML</p>
+        <div class="bar"><div style="width:90%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>CSS</p>
+        <div class="bar"><div style="width:85%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar"><div style="width:75%"></div></div>
     </div>
 </section>
 
@@ -60,23 +75,15 @@
 <section id="projects" class="section">
     <h2>Projects</h2>
 
-    <div class="grid">
+    <div class="card project">
+    <img src="assets/images/project1.png">
 
-        <div class="card">
-            <img src="assets/images/project1.png" alt="">
-            <h3>Portfolio Website</h3>
-            <p>Personal portfolio built using HTML, CSS, JS</p>
-            <a href="#" class="btn">View Code</a>
-        </div>
-
-        <div class="card">
-            <img src="assets/images/project2.png" alt="">
-            <h3>Project 2</h3>
-            <p>Description of project</p>
-            <a href="#" class="btn">View Code</a>
-        </div>
-
+    <div class="overlay">
+        <h3>Portfolio Website</h3>
+        <p>Modern responsive portfolio</p>
+        <a href="#">View Code</a>
     </div>
+</div>+
 </section>
 
 <!-- CONTACT -->
@@ -96,7 +103,6 @@
         <a href="#"><i class="fa-solid fa-envelope"></i></a>
     </div>
 </section>
-
 <script src="script.js"></script>
 
 </body>
