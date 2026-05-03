@@ -34,3 +34,15 @@ let count = 0, index = 0;
         setTimeout(type, 100);
     }
 })();
+// CONTACT FORM HANDLER
+const form = document.getElementById("contactForm");
+const message = document.getElementById("formMessage");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    message.textContent = "Message sent successfully!";
+    message.style.color = "lightgreen";
+
+    form.reset();
+});

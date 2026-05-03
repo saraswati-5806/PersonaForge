@@ -172,3 +172,29 @@ footer {
         display: block;
     }
 }
+.contact-form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-message {
+    margin-top: 10px;
+    font-size: 14px;
+}
