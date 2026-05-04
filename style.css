@@ -5,17 +5,31 @@
 }
 
 :root {
-    --primary: #001F3F;
-    --secondary: #193857;
-    --accent: #FFD700;
-    --background: #E6F0F4;
-    --text-light: #FFFFFF;
+    --primary-bg: #0B0F1A;
+    --secondary-start: #121826;
+    --secondary-end: #1B2436;
+
+    --accent: #D4A85A;
+    --accent-soft: #C89B5A;
+
+    --card-bg: #1E2A3A;
+    --border: #B8924F;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #C5C9D3;
+    --text-muted: #8A90A2;
+
+    --input-bg: #101624;
+    --hover-glow: #E6C07B;
+
+    --divider: #2A3446;
+    --footer-bg: #0A0D16;
 }
 
 body {
+    background: var(--primary-bg);
+    color: var(--text-secondary);
     font-family: 'Poppins', sans-serif;
-     background: var(--background);
-    color: var(--primary);
 }
 
 /* NAV */
@@ -26,8 +40,9 @@ body {
     justify-content: space-between;
     padding: 15px 30px;
     z-index: 1000;
-    background: var(--primary);
-    color: var(--text-light);
+    background: var(--secondary-start);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--divider);
 }
 
 .nav-links {
@@ -37,8 +52,12 @@ body {
 }
 
 .nav-links a {
-     color: var(--text-light);
-    text-decoration: none;
+    color: var(--text-secondary);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
 }
 
 .hamburger {
@@ -55,6 +74,7 @@ body {
 .section {
     padding: 100px 20px;
     text-align: center;
+    border-bottom: 1px solid var(--divider);
 }
 
 /* HOME */
@@ -63,29 +83,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(135deg, var(--secondary-start), var(--secondary-end));
 }
 
 .glass {
-    background: rgba(255,255,255,0.1);
-    padding: 40px;
-    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--divider);
+    color: var(--text-secondary);
 }
 
 /* BUTTON */
 .btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
     background: var(--accent);
-    color: var(--primary);
-    text-decoration: none;
+    color: #000;
+    border: none;
+    transition: 0.3s;
 }
 
 .btn:hover {
-    background: #e6c200;
+    box-shadow: 0 0 10px var(--hover-glow);
+    background: var(--accent-soft);
 }
-
 /* GRID */
 .grid {
     display: grid;
@@ -97,6 +115,9 @@ body {
 .project {
     position: relative;
     cursor: pointer;
+    background: var(--card-bg);
+    border: 1px solid var(--divider);
+    color: var(--text-secondary);
 }
 
 .project img {
@@ -106,8 +127,8 @@ body {
 .overlay {
     position: absolute;
     top: 0;
-    background: rgba(0, 31, 63, 0.9);
-    color: var(--text-light);
+    background: rgba(11, 15, 26, 0.9);
+    color: var(--text-primary);
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -127,7 +148,7 @@ body {
 }
 
 .bar {
-    background: #333;
+     background: var(--divider);
     height: 8px;
 }
 
@@ -157,8 +178,9 @@ form {
 }
 
 .modal-content {
-    background: var(--secondary);
-    color: var(--text-light);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--divider);
 }
 
 #close {
@@ -169,8 +191,9 @@ form {
 footer {
     text-align: center;
     padding: 20px;
-    background: var(--primary);
-    color: var(--text-light);
+    background: var(--footer-bg);
+    color: var(--text-muted);
+    border-top: 1px solid var(--divider);
 }
 
 /* MOBILE */
@@ -192,16 +215,27 @@ footer {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 5px var(--hover-glow);
 }
 
 .contact-form button {
     background: var(--accent);
-    color: var(--primary);
+    color: black;
     padding: 10px;
     border: none;
     cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: var(--accent-soft);
 }
 
 .form-message {
