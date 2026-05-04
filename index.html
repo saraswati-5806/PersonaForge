@@ -6,9 +6,7 @@
 <title>My Portfolio</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -16,37 +14,74 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <h2 class="logo">MyPortfolio</h2>
+    <h2 class="logo">PersonaForge</h2>
 
     <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#projects">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <div class="right-controls">
-        <button id="theme-toggle">🌙</button>
-        <div class="hamburger">☰</div>
-    </div>
+    <a href="#contact" class="nav-btn">Get Started →</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="section home">
-    <div class="glass">
-        <h1>Hi, I'm <span>Your Name</span></h1>
-        <h2 id="typing"></h2>
+<!-- HERO -->
+<section id="home" class="hero">
 
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="assets/resume.pdf" download class="btn">Download Resume</a>
+    <div class="hero-content">
+        <p class="tagline">Professional</p>
+
+        <h1>
+            Modern <span>Web Design</span>
+        </h1>
+
+        <p class="subtitle">
+            Building clean, scalable and high performance digital experiences
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn">View Work</a>
+            <a href="#contact" class="btn outline">Contact Me</a>
+        </div>
+
+        <div class="stats">
+            <div><h3>500+</h3><p>Projects</p></div>
+            <div><h3>98%</h3><p>Success</p></div>
+            <div><h3>24/7</h3><p>Support</p></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- SERVICES / FEATURES -->
+<section class="features">
+    <div class="feature-card active">
+        <i class="fa-solid fa-code"></i>
+        <h3>Web Development</h3>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>SEO Growth</h3>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h3>E-Commerce</h3>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-headset"></i>
+        <h3>Support</h3>
     </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section">
     <h2>About Me</h2>
-    <p>I am a passionate developer learning web technologies and building modern responsive websites.</p>
+    <p>I build modern web applications with performance and design in mind.</p>
 </section>
 
 <!-- SKILLS -->
@@ -71,15 +106,13 @@
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-    <h2>Projects</h2>
+    <h2>Portfolio</h2>
 
     <div class="grid">
-
         <div class="card project" onclick="openModal('Portfolio Website','Modern responsive portfolio','https://github.com/')">
             <img src="assets/images/project1.png">
             <div class="overlay">
                 <h3>Portfolio Website</h3>
-                <p>Click to view</p>
             </div>
         </div>
 
@@ -87,10 +120,8 @@
             <img src="assets/images/project2.png">
             <div class="overlay">
                 <h3>Project 2</h3>
-                <p>Click to view</p>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -99,30 +130,22 @@
     <h2>Contact Me</h2>
 
     <form id="contactForm" class="contact-form">
-        
         <input type="text" id="name" placeholder="Your Name">
-        <small class="error" id="nameError"></small>
+        <small id="nameError" class="error"></small>
 
         <input type="email" id="email" placeholder="Your Email">
-        <small class="error" id="emailError"></small>
+        <small id="emailError" class="error"></small>
 
         <textarea id="message" placeholder="Your Message"></textarea>
-        <small class="error" id="messageError"></small>
+        <small id="messageError" class="error"></small>
 
         <button type="submit" id="submitBtn">
             <span id="btnText">Send Message</span>
             <span id="spinner" class="spinner"></span>
         </button>
     </form>
-
-    <div class="socials">
-        <a href="#"><i class="fa-brands fa-github"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-    </div>
 </section>
 
-<!-- TOAST -->
 <div id="toast"></div>
 
 <!-- MODAL -->
@@ -131,7 +154,6 @@
         <span id="close">&times;</span>
         <h2 id="modal-title"></h2>
         <p id="modal-desc"></p>
-        <a id="modal-link" target="_blank">View Project</a>
     </div>
 </div>
 
@@ -140,6 +162,5 @@
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
