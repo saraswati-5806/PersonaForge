@@ -12,7 +12,14 @@ if(hamburger){
 function openModal(title, desc, link){
     document.getElementById("modal").style.display = "flex";
     document.getElementById("modal-title").innerText = title;
-    document.getElementById("modal-desc").innerText = desc;
+    
+    // Create the description text + a button for the link
+    let modalContent = `<p>${desc}</p>`;
+    if(link) {
+        modalContent += `<br><a href="${link}" target="_blank" class="btn" style="display:inline-block; margin-top:15px;">Read Full Paper →</a>`;
+    }
+    
+    document.getElementById("modal-desc").innerHTML = modalContent;
 }
 
 // CLOSE MODAL
