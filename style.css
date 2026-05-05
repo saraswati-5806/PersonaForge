@@ -222,23 +222,84 @@ body {
     opacity: 1;
 }
 
-/* SKILLS */
-.skill {
-    margin: 20px auto;
-    max-width: 400px;
+/* --- NEW SKILLS & ABOUT STYLING --- */
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
 }
 
-.bar {
-    background: var(--divider);
-    height: 8px;
-    border-radius: 10px;
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.bar div {
+.skill-category {
+    background: var(--card-bg); /* Kept your dark card theme */
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--divider);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.skill-category h3 {
+    color: var(--accent); /* Updated to your gold accent */
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tags span {
+    background: var(--secondary-start);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid var(--divider);
+    transition: all 0.3s ease;
+}
+
+.skill-tags span:hover {
     background: var(--accent);
-    height: 100%;
-    border-radius: 10px;
+    color: black;
+    border-color: var(--accent);
 }
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+}
+
+/* --- END NEW STYLING --- */
 
 /* FORM */
 .contact-form {
