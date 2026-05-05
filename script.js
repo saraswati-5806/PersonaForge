@@ -8,30 +8,36 @@ if(hamburger){
     });
 }
 
-// MODAL - Updated to ensure smooth opening
+// MODAL - Fixed to handle links correctly
 function openModal(title, desc, link){
     const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDesc = document.getElementById("modal-desc");
-
     modal.style.display = "flex";
-    modalTitle.innerText = title;
+    document.getElementById("modal-title").innerText = title;
     
-    // This allows us to put a button inside the description
-    let contentHtml = `<p style="margin-bottom: 20px;">${desc}</p>`;
-    
+    let modalContent = `<p>${desc}</p>`;
     if(link) {
-        contentHtml += `
-            <a href="${link}" target="_blank" class="btn" style="display: inline-block; text-decoration: none; color: black; font-weight: 600;">
-                <i class="fa-solid fa-file-pdf"></i> Read Full Paper (DOI)
-            </a>`;
+        modalContent += `
+            <div style="margin-top: 20px;">
+                <a href="${link}" target="_blank" class="btn" style="text-decoration:none; display:inline-block; color:black;">
+                    Read Full Paper →
+                </a>
+            </div>`;
     }
     
-    modalDesc.innerHTML = contentHtml;
+    document.getElementById("modal-desc").innerHTML = modalContent;
 }
+
 // CLOSE MODAL
 document.getElementById("close").onclick = () => {
     document.getElementById("modal").style.display = "none";
+};
+
+// Close modal if user clicks outside the content box
+window.onclick = (event) => {
+    const modal = document.getElementById("modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 };
 
 // TYPING EFFECT
