@@ -10,18 +10,25 @@ if(hamburger){
 
 // MODAL - Updated to ensure smooth opening
 function openModal(title, desc, link){
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modal-title").innerText = title;
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+
+    modal.style.display = "flex";
+    modalTitle.innerText = title;
     
-    // Create the description text + a button for the link
-    let modalContent = `<p>${desc}</p>`;
+    // This allows us to put a button inside the description
+    let contentHtml = `<p style="margin-bottom: 20px;">${desc}</p>`;
+    
     if(link) {
-        modalContent += `<br><a href="${link}" target="_blank" class="btn" style="display:inline-block; margin-top:15px;">Read Full Paper →</a>`;
+        contentHtml += `
+            <a href="${link}" target="_blank" class="btn" style="display: inline-block; text-decoration: none; color: black; font-weight: 600;">
+                <i class="fa-solid fa-file-pdf"></i> Read Full Paper (DOI)
+            </a>`;
     }
     
-    document.getElementById("modal-desc").innerHTML = modalContent;
+    modalDesc.innerHTML = contentHtml;
 }
-
 // CLOSE MODAL
 document.getElementById("close").onclick = () => {
     document.getElementById("modal").style.display = "none";
