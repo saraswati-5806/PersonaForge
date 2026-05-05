@@ -420,3 +420,25 @@ footer {
         display: none;
     }
 }
+
+/* PROJECT OVERLAY ENHANCEMENTS */
+.overlay-text {
+    text-align: center;
+    padding: 20px;
+}
+
+.project-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.project h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
