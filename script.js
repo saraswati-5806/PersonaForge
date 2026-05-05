@@ -9,26 +9,27 @@ if(hamburger){
 }
 
 // MODAL - Fixed to handle links correctly
-function openModal(title, desc, link){
+function openModal(title, desc, link) {
     const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+
     modal.style.display = "flex";
-    document.getElementById("modal-title").innerText = title;
-    
-    let modalContent = `<p>${desc}</p>`;
-    if(link) {
-        modalContent += `
-            <div style="margin-top: 20px;">
-                <a href="${link}" target="_blank" class="btn" style="text-decoration:none; display:inline-block; color:black;">
-                    Read Full Paper →
-                </a>
-            </div>`;
-    }
-    
-    document.getElementById("modal-desc").innerHTML = modalContent;
+    modalTitle.innerText = title;
+
+    // Using backticks (`) prevents most "Uncaught Syntax" errors in VS Code
+    let contentHtml = `
+        <p style="margin-bottom: 20px;">${desc}</p>
+        <a href="${link}" target="_blank" class="btn" style="display: inline-block; text-decoration: none; color: black; font-weight: 600;">
+            <i class="fa-solid fa-file-pdf"></i> Read Full Paper (Zenodo)
+        </a>
+    `;
+
+    modalDesc.innerHTML = contentHtml;
 }
 
-// CLOSE MODAL
-document.getElementById("close").onclick = () => {
+// Ensure the close button works
+document.getElementById("close").onclick = function() {
     document.getElementById("modal").style.display = "none";
 };
 
