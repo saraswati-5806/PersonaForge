@@ -33,3 +33,27 @@ window.addEventListener("scroll", () => {
         ? "rgba(18,24,38,0.9)" 
         : "transparent";
 });
+
+function openModal(title, desc, link) {
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+
+    modal.style.display = "flex";
+    modalTitle.innerText = title;
+
+    // Using backticks (`) prevents most "Uncaught Syntax" errors in VS Code
+    let contentHtml = `
+        <p style="margin-bottom: 20px;">${desc}</p>
+        <a href="${link}" target="_blank" class="btn" style="display: inline-block; text-decoration: none; color: black; font-weight: 600;">
+            <i class="fa-solid fa-file-pdf"></i> Read Full Paper (Zenodo)
+        </a>
+    `;
+
+    modalDesc.innerHTML = contentHtml;
+}
+
+// Ensure the close button works
+document.getElementById("close").onclick = function() {
+    document.getElementById("modal").style.display = "none";
+};
