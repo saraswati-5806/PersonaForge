@@ -33,6 +33,8 @@ body {
     background: var(--primary-bg);
     color: var(--text-secondary);
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -45,6 +47,8 @@ body {
     padding: 15px 40px;
     z-index: 1000;
     background: var(--secondary-start);
+    border-bottom: 1px solid var(--divider);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--divider);
 }
 
@@ -68,6 +72,8 @@ body {
     color: var(--accent);
 }
 
+
+
 /* NAV BUTTON */
 .nav-btn {
     background: var(--accent);
@@ -88,9 +94,36 @@ body {
     padding: 100px 20px;
     text-align: center;
     border-bottom: 1px solid var(--divider);
+    backdrop-filter: blur(10px);
+}
+
+/* FADE ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* HERO */
+
+/* Layout Container */
+.hero-wrapper {
+    display: flex;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 0 10%; /* Provides the side breathing room seen in the 2nd pic */
+    gap: 30px;
+}
+
 .hero {
     height: 100vh;
     display: flex;
@@ -98,10 +131,65 @@ body {
     justify-content: center;
     background: linear-gradient(135deg, var(--secondary-start), var(--primary-bg));
     text-align: center;
+    gap: 50px;
+    padding: 0 5%;
+    overflow: hidden; /* FIX: Prevent vertically long images from overlapping sections below */
+}
+
+/* IMAGE */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Pushes image to the far center */
+}
+
+.hero-image img {
+    max-width: 400px; /* Adjust based on your photo size */
+    width: 100%;
+    height: auto; /* FIX: Maintains aspect ratio, prevents stretching */
+    border-radius: 20px;
+    filter: grayscale(100%);
+    object-fit: contain; /* Ensures entire image fits inside its box */
+    /* Optional: Small professional frame */
+    border: 3px solid var(--accent);
+}
+
+.hero-image img:hover {
+    transform: scale(1.02); /* Subtle zoom effect on hover */
+    filter: grayscale(0%);
+}
+
+/* CONTENT */
+.hero-content {
+    max-width: 500px;
+    flex: 1;
+    text-align: right; /* Forces text to the right */
+}
+
+/* Responsive Rule for Mobile */
+@media (max-width: 768px) {
+    .hero-wrapper {
+        flex-direction: column-reverse; /* Stacks image on top for phones */
+        text-align: center;
+        padding: 50px 5%;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-image {
+        justify-content: center;
+    }
+    .home-image img {
+        max-width: 280px;
+    }
 }
 
 .hero h1 {
-    font-size: 60px;
+    font-size: 50px;
+    line-height: 1.1;
+    margin: 15px 0;
     color: var(--text-primary);
 }
 
@@ -117,17 +205,24 @@ body {
 .subtitle {
     color: var(--text-secondary);
     margin: 10px 0;
+    line-height: 1.6;
 }
 
 /* BUTTONS */
 .btn {
+    display: inline-block;
     background: var(--accent);
     color: black;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 25px;
+    padding: 12px 28px;
+    margin-top: 20px;
+    border-radius: 30px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 600;
+}
+
+.icon-btn {
+    padding: 10px;
 }
 
 .btn:hover {
@@ -139,6 +234,26 @@ body {
     background: transparent;
     border: 1px solid var(--accent);
     color: var(--accent);
+    margin-left: 10px;
+}
+
+/* GLASS EFFECT */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* FADE ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* STATS */
@@ -159,6 +274,11 @@ body {
     justify-content: center;
     gap: 20px;
     margin-top: -60px;
+    z-index: 10;
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .feature-card {
@@ -167,20 +287,55 @@ body {
     border-radius: 10px;
     border: 1px solid var(--divider);
     color: var(--text-secondary);
-    transition: 0.3s;
+    transition: all 0.3s ease; /* Smooth hover transition */
+    flex: 1;
+    position: relative;
+    overflow: hidden; /* For advanced shine effect */
+}
+
+.features.fade {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card .glow-spot {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(230, 192, 123, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover .glow-spot {
+    opacity: 1;
 }
 
 .feature-card i {
     color: var(--accent);
     font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .feature-card.active {
     box-shadow: 0 0 20px var(--hover-glow);
+    border-color: var(--border);
+}
+
+.features:hover .feature-card.active:not(:hover) {
+    box-shadow: none;
+    border-color: var(--divider);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    /* Professional lift */
+    box-shadow: 0 0 20px var(--hover-glow); /* Shifts shine to current */
+    border-color: var(--border);
+    color: var(--text-primary);
 }
 
 .feature-card p {
@@ -445,10 +600,44 @@ footer {
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .nav-links {
         display: none;
     }
+    .approach-list {
+        flex-direction: column;
+    }
+    
+    .approach-list li {
+        width: 100%;
+    }
+
+}
+
+/* Styling for the Approach List as seen in the image */
+.approach-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0;
+}
+
+.approach-list li {
+    background: #2a2a2a;
+    border-radius: 15px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--gray);
+    flex: 1;
+}
+
+.approach-list .num {
+    /* Style for the 01, 02, 03 numbers */
+    font-weight: bold;
+    color: var(--accent); /* Or your primary color */
 }
 
 /* PROJECT OVERLAY ENHANCEMENTS */
@@ -467,9 +656,27 @@ footer {
     font-weight: 700;
 }
 
+/* Smooth hover */
+.project:hover {
+    transform: scale(1.03);
+}
+
 .project h3 {
     font-size: 1.5rem;
     color: var(--text-primary);
+}
+
+/* MODAL FIX */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 #modal-desc {

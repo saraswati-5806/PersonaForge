@@ -21,12 +21,13 @@ function openModal(title, desc, link) {
     let contentHtml = `
         <p style="margin-bottom: 20px;">${desc}</p>
         <a href="${link}" target="_blank" class="btn" style="display: inline-block; text-decoration: none; color: black; font-weight: 600;">
-            <i class="fa-solid fa-file-pdf"></i> Read Full Paper (Zenodo)
+            <i class="fa-solid fa-file-pdf"></i> View Full Work 
         </a>
     `;
 
     modalDesc.innerHTML = contentHtml;
 }
+document.querySelector('.hero').classList.add('show');
 
 // Ensure the close button works
 document.getElementById("close").onclick = function() {
@@ -41,24 +42,37 @@ window.onclick = (event) => {
     }
 };
 
-// TYPING EFFECT
+// Updated TYPING EFFECT
 const text = ["Software Engineer", "Security Researcher", "Full-Stack Developer"];
-let count = 0, index = 0;
+let i = 0, j = 0;
+let isDeleting = false; // Added for a smoother "typing" feel
 
-(function type(){
-    let current = text[count];
+function type() {
+    const currentText = text[i];
     const typingElement = document.getElementById("typing");
-    if(typingElement) {
-        typingElement.textContent = current.slice(0, ++index);
-        if(index === current.length){
-            count = (count + 1) % text.length;
-            index = 0;
-            setTimeout(type, 1500);
-        } else {
-            setTimeout(type, 100);
-        }
+
+    if (!typingElement) return; // Safety check
+
+    if (isDeleting) {
+        typingElement.innerHTML = currentText.slice(0, j--);
+    } else {
+        typingElement.innerHTML = currentText.slice(0, j++);
     }
-})();
+
+    if (!isDeleting && j > currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 1500); // Wait at the end of the word
+    } else if (isDeleting && j < 0) {
+        isDeleting = false;
+        i = (i + 1) % text.length;
+        j = 0;
+        setTimeout(type, 500);
+    } else {
+        setTimeout(type, isDeleting ? 60 : 120);
+    }
+}
+type();
+
 
 // FORM HANDLING
 const form = document.getElementById("contactForm");
@@ -109,3 +123,34 @@ if(form) {
         setTimeout(() => toast.classList.remove("show"), 3000);
     });
 }
+
+// SCROLL ANIMATION
+const fadeElements = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+    fadeElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            el.classList.add("show");
+        }
+    });
+});
+
+// NAVBAR SCROLL EFFECT
+window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".navbar");
+    nav.style.background = window.scrollY > 50 
+        ? "rgba(18,24,38,0.9)" 
+        : "transparent";
+});
+// Fade-in Animation on Scroll
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
